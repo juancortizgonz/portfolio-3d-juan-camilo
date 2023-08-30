@@ -1,13 +1,17 @@
 // CSS
 import "./styles.css";
-// Camera controller
-import { OrbitControls } from "@react-three/drei";
 // Hooks
 import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+// Camera controller
+import { OrbitControls } from "@react-three/drei";
 
 const Experience = () => {
     const boxRef = useRef();
-    console.log(boxRef.current);
+    // console.log(boxRef.current.rotation.x);
+    useFrame((state, delta) => {
+        boxRef.current.rotation.x += 1 * delta;
+    });
     
     return (
         <>
