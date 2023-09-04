@@ -11,4 +11,29 @@ body,
 
 canvas {
     touch-action: none;
+    background-color: rgb(249, 130, 26);
+}
+
+.card {
+    background-color: rgb(61, 61, 61);
+    opacity: 0.5;
+    height: 320px;
+    width: 45%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius:  10px 100px / 120px;
+    position: absolute;
+    top: 1/2;
+    z-index: 1;
+}
+
+.card > h3,
+p {
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
