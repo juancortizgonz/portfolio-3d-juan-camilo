@@ -11,6 +11,8 @@ const Experience = () => {
     // console.log(boxRef.current.rotation.x);
     useFrame((state, delta) => {
         boxRef.current.rotation.x += 1 * delta;
+        boxRef.current.rotation.y += 1 * delta;
+        boxRef.current.rotation.z += 1 * delta;
     });
     
     return (
@@ -21,7 +23,14 @@ const Experience = () => {
             <mesh ref={boxRef}>
                 <boxGeometry args={[1, 1, 1]} />
                 <meshStandardMaterial color="aqua" />
+                {/* Sphere <sphereGeometry args={[1, 32, 10]} />
+                <meshStandardMaterial color="aqua" /> */}
+                {/* Torus <torusGeometry args={[1, 1, 10, 50]} />
+                <meshStandardMaterial color="aqua" /> */}
+                {/* <cylinderGeometry args={[1, 1, 1]} />
+                <meshStandardMaterial color="aqua" /> */}
             </mesh>
+            
         </>
     );
 }
