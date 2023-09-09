@@ -5,6 +5,8 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 // Camera controller
 import { OrbitControls } from "@react-three/drei";
+// Components
+import Cat from "./World/Cat";
 
 const Experience = () => {
     const boxRef = useRef();
@@ -30,7 +32,7 @@ const Experience = () => {
                 {/* <cylinderGeometry args={[1, 1, 1]} />
                 <meshStandardMaterial color="aqua" /> */}
             </mesh>
-            
+            <Cat />
         </>
     );
 }
