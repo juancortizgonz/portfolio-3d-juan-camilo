@@ -1,37 +1,73 @@
-import { useGLTF, useAnimations, useTexture } from "@react-three/drei";
-import { useEffect, useRef } from "react";
+import { useGLTF, useAnimations, useTexture } from '@react-three/drei';
+import { useEffect, useRef } from 'react';
 
-const Cat = () => {
-    const catRef = useRef();
-    const catModel = useGLTF("/assets/models/cat/scene.gltf");
-    const { animations } = catModel;
-    const { actions } = useAnimations(animations, catRef);
+const Cat = (props) => {
+  const catRef = useRef();
+  const catModel = useGLTF('/assets/models/cat/cat.glb');
 
-    const PATH = "/assets/textures/";
+  const { nodes, materials, animations } = useGLTF(
+    '/assets/models/cat/cat.glb'
+  );
+  const { actions } = useAnimations(animations, catRef);
 
-    const propsTexture = useTexture({
-        map: PATH + "materialRoughAO.png",
-        normalMap: PATH + "materialNormal.png",
-        roughnessMap: PATH + "materialRoughMetal.png",
-        aoMap: PATH + "materialColor.png",
-    });
+  const PATH = '/assets/textures/';
 
-    // console.log(catModel);
+  const propsTexture = useTexture({
+    map: PATH + 'diffuseMap.png',
+    normalMap: PATH + 'normalAO.png',
+    roughnessMap: PATH + 'roughMap.png',
+    aoMap: PATH + 'mapAO.png',
+  });
 
-    useEffect(() => {
-        const action = actions["Scene"];
-        action.play();
-    }, []);
+  // console.log(catModel);
 
-    return (
-        <>
-        <mesh ref={catRef}>
-            <primitive position-x={2.5} position-z={-2} rotation-y={-Math.PI * 0.3} scale={0.004} object={catModel.scene} />
-            <meshStandardMaterial {...propsTexture} />
-        </mesh>
-        </>
-    );
-}
+  useEffect(() => {
+    const action = actions['Scene'];
+    action.play();
+  }, []);
+
+  return (
+    <>
+      <group ref={catRef} {...props} dispose={null}>
+        <group name="Sketchfab_Scene">
+          <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+            <group
+              name="0df7f1c552db41979cdb0b8efba99edffbx"
+              rotation={[Math.PI / 2, 0, 0]}
+            >
+              <group name="Object_2">
+                <group name="RootNode">
+                  <group name="Rig" rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+                    <group name="Object_5">
+                      <primitive object={nodes._rootJoint} />
+                      <skinnedMesh
+                        name="Object_43"
+                        geometry={nodes.Object_43.geometry}
+                        material={materials.Mat_Gradient}
+                        skeleton={nodes.Object_43.skeleton}
+                        castShadow
+                      />
+                      <group
+                        name="Object_42"
+                        rotation={[-Math.PI / 2, 0, 0]}
+                        scale={100}
+                      />
+                    </group>
+                  </group>
+                  <group
+                    name="Cat"
+                    rotation={[-Math.PI / 2, 0, 0]}
+                    scale={100}
+                  />
+                </group>
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </>
+  );
+};
 
 export default Cat;
-useGLTF.preload("/assets/models/cat/scene.gltf");
+useGLTF.preload('/assets/models/cat/cat.glb');
