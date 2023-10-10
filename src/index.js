@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client';
 import { Canvas } from '@react-three/fiber';
 // Components
-import Experience from './Experience';
-import Info from './components/Info';
+import Experience from './World/Experience';
+import Info from './Info/Info';
 // React
 import { Suspense } from 'react';
 // Loader
