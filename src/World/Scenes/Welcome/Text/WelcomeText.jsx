@@ -2,6 +2,8 @@
 import { useRef } from 'react';
 // Text 3D
 import { Text3D } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+import { MathUtils } from 'three';
 
 const WelcomeText = () => {
     const welcomeRef = useRef();
