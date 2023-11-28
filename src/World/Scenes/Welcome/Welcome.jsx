@@ -1,3 +1,4 @@
+import { Physics } from '@react-three/rapier';
 // Position
 import { Center, Float } from '@react-three/drei';
 // Components
@@ -26,13 +27,15 @@ const Welcome = () => {
             scale={0.7}
             />
         </Float>
-        <Car
-            position-x={2.5}
-            position-z={-2}
-            rotation-y={-Math.PI * 0.6}
-            scale={0.006}
-        />
-        <Floor rotation-x={-Math.PI / 2} receiveShadow />
+        <Physics>
+            <Car
+                position-x={2.5}
+                position-z={-2}
+                rotation-y={-Math.PI * 0.6}
+                scale={0.006}
+            />
+            <Floor rotation-x={-Math.PI / 2} receiveShadow />
+        </Physics>
         </>
     )
 }

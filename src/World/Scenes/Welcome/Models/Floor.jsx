@@ -1,4 +1,5 @@
 import { useTexture } from '@react-three/drei';
+import { RigidBody } from '@react-three/rapier';
 import { RepeatWrapping, Vector2 } from 'three';
 
 const Floor = (props) => {
@@ -43,10 +44,12 @@ const Floor = (props) => {
       new Vector2(0.5, 0.5);
 
   return (
-    <mesh {...props}>
-      <planeGeometry args={[64, 64, 96, 96]} />
-      <meshStandardMaterial {...propsTexture} />
-    </mesh>
+    <RigidBody type="fixed" colliders={"hull"}>
+      <mesh {...props}>
+        <planeGeometry args={[64, 64, 96, 96]} />
+        <meshStandardMaterial {...propsTexture} />
+      </mesh>
+    </RigidBody>
   );
 };
 export default Floor;

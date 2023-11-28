@@ -8,7 +8,13 @@ const Controls = () => {
 
     return (
         <>
-        <OrbitControls makeDefault maxPolarAngle={Math.PI / 3} enablePan={false} enableRotate={false} />
+        <OrbitControls 
+            makeDefault
+            maxPolarAngle={Math.PI / 3}
+            enableZoom={false}
+            enablePan={false}
+            enableRotate={false}
+        />
         <Perf position={'top-right'} />
         </>
     )
